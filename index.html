@@ -19,7 +19,7 @@
     <!-- my css  -->
      <link rel="stylesheet" href="style.css">
 
-    <title>Portofolio</title>
+    <title>Portfolio</title>
   </head>
   <body>
     <!--navbar start-->
@@ -160,20 +160,32 @@
            </div>
            <div class="row justify-content-center mb-3">
             <div class="col-md-6">
-              <form>
+              <div class="alert alert-success alert-dismissible fade show success-alert d-none" role="alert">
+                <strong>Terima Kasih!</strong> Pesan anda telah terkirim.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <div class="alert alert-danger alert-dismissible fade show fail-alert d-none" role="alert">
+                <strong>Maaf!</strong> Pesan anda tidak dapat terkirim, silakan coba lagi.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <form name="email-form-porfolio">
                 <div class="mb-3">
                   <label for="name" class="form-label">Nama Lengkap</label>
-                  <input type="text" class="form-control" id="name" aria-describedby="name">
+                  <input type="text" class="form-control" id="name" aria-describedby="name" name="nama">
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" aria-describedby="email">
+                  <input type="email" class="form-control" id="email" aria-describedby="email" name="email">
                 </div>
                 <div class="mb-3">
                   <label for="mail" class="form-label">Pesan</label>
-                  <textarea class="form-control" id="mail" rows="3"></textarea>
+                  <textarea class="form-control" id="mail" rows="3" name="pesan"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+                <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Mengirim...
+                </button>
               </form>
             </div>
            </div>
@@ -189,10 +201,43 @@
      </footer>
     <!-- footer end -->
     
+    <!-- script bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+
+    <!-- script gs -->
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwOluW3qYvHclsp3DORCJa4Ps5LXUKVBZSxz0LjSkGQTa9ny6mpqE_z-0KjccvLSfbWKg/exec'
+      const form = document.forms['email-form-porfolio']
+      const btnKirim = document.querySelector('.btn-kirim');
+      const btnLoading = document.querySelector('.btn-loading');
+      const successAlert = document.querySelector('.success-alert');
+      const failAlert = document.querySelector('.fail-alert');
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        // ketika tombol submit diklik
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            btnLoading.classList.toggle('d-none');
+            btnKirim.classList.toggle('d-none');
+            successAlert.classList.toggle('d-none');
+            // reset form
+            form.reset();
+            console.log('Success!', response)
+      })
+          .catch(error => {
+            failAlert.classList.toggle('d-none');
+            // reset form
+            form.reset();
+            console.error('Error!', error.message)
+      })
+      })
+    </script>
   </body>
 </html>
