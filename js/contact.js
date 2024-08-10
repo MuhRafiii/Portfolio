@@ -15,7 +15,7 @@ form.addEventListener("submit", (e) => {
       btnKirim.classList.toggle("d-none");
       // reset form
       form.reset();
-      alert("Terima kasih! Pesan anda telah terkirim.");
+      alert("Terima kasih, pesan anda telah terkirim.");
       console.log("Success!", response);
     })
     .catch((error) => {
@@ -25,7 +25,7 @@ form.addEventListener("submit", (e) => {
       // reset form
       form.reset();
       alert(
-        "Mohon maaf! Pesan anda tidak dapat terkirim. Pastikan anda memiliki jaringan internet atau coba beberapa saat lagi."
+        "Mohon maaf, pesan anda tidak dapat terkirim. Pastikan anda memiliki jaringan internet atau coba beberapa saat lagi."
       );
     });
 });
