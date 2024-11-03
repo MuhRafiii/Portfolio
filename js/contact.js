@@ -1,6 +1,6 @@
 const scriptURL =
-  "https://script.google.com/macros/s/AKfycbwOluW3qYvHclsp3DORCJa4Ps5LXUKVBZSxz0LjSkGQTa9ny6mpqE_z-0KjccvLSfbWKg/exec";
-const form = document.forms["email-form-porfolio"];
+  "https://script.google.com/macros/s/AKfycbxAI0AvEqH5F2xU42eXNUCJbAY0-Ggbpcht1OHGVEiZL397TUEZy0aM4ZLRpF2D4yyC/exec";
+const form = document.forms["portfolio-contact-form"];
 const btnKirim = document.querySelector(".btn-kirim");
 const btnLoading = document.querySelector(".btn-loading");
 
