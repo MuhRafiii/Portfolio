@@ -1,5 +1,5 @@
 const scriptURL =
-  "https://script.google.com/macros/s/AKfycbxAI0AvEqH5F2xU42eXNUCJbAY0-Ggbpcht1OHGVEiZL397TUEZy0aM4ZLRpF2D4yyC/exec";
+  "https://script.google.com/macros/s/AKfycbxI0xek9gROFtTKk4VIf11TF50fmyusSRfN8dkSZWDOfy3VS_BiTYXAhPFO5g6oUpey/exec";
 const form = document.forms["portfolio-contact-form"];
 const btnKirim = document.querySelector(".btn-kirim");
 const btnLoading = document.querySelector(".btn-loading");
